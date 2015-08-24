@@ -39,16 +39,7 @@ namespace GeoJSON.Net.Converters
             {
                 foreach (var coordinate in coordinates)
                 {
-                    var longitude = coordinate[0];
-                    var latitude = coordinate[1];
-                    double? altitude = null;
-
-                    if (coordinate.Length == 3)
-                    {
-                        altitude = coordinate[2];
-                    }
-
-                    positions.Add(new Point(new GeographicPosition(latitude, longitude, altitude)));
+                    positions.Add(new Point(new Position(coordinate)));
                 }
 
                 return positions;
