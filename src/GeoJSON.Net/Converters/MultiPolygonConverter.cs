@@ -72,7 +72,7 @@ namespace GeoJSON.Net.Converters
                     for (int j = 0; j < polygon.Coordinates.Count; j++)
                     {
                         var lineString = polygon.Coordinates[j];
-                        var coordinateElements = lineString.Coordinates.OfType<GeographicPosition>();
+                        var coordinateElements = lineString.Coordinates.OfType<Position>();
                         if (coordinateElements.Any())
                         {
                             // start linear rings of polygon

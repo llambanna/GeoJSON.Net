@@ -52,16 +52,7 @@ namespace GeoJSON.Net.Converters
 
             foreach (var coordinate in coordinates)
             {
-                var longitude = coordinate[0];
-                var latitude = coordinate[1];
-                double? altitude = null;
-
-                if (coordinate.Length == 3)
-                {
-                    altitude = coordinate[2];
-                }
-
-                positions.Add(new GeographicPosition(latitude, longitude, altitude));
+                positions.Add(new Position(coordinate));
             }
 
             return positions;
@@ -82,12 +73,10 @@ namespace GeoJSON.Net.Converters
 
                 foreach (var position in coordinateElements)
                 {
-                    // TODO: position types should expose a double[] coordinates property that can be used to write values 
-                    var coordinates = (GeographicPosition)position;
-                    var coordinateElement = new JArray(coordinates.Longitude, coordinates.Latitude);
-                    if (coordinates.Altitude.HasValue)
+                    var coordinateElement = new JArray(position.Coordinates[0], position.Coordinates[1]);
+                    if (position.Altitude.HasValue)
                     {
-                        coordinateElement = new JArray(coordinates.Longitude, coordinates.Latitude, coordinates.Altitude);
+                        coordinateElement = new JArray(position.Coordinates);
                     }
 
                     coordinateArray.Add(coordinateElement);
