@@ -86,15 +86,7 @@ namespace GeoJSON.Net.Geometry
                 Altitude = alt;
             }
         }
-
-        ///// <summary>
-        ///// Prevents a default instance of the <see cref="ProjectedPosition"/> class from being created.
-        ///// </summary>
-        //private ProjectedPosition()
-        //{
-        //    Coordinates = new double?[3];
-        //}
-
+        
         /// <summary>
         /// Gets the easting.
         /// </summary>
