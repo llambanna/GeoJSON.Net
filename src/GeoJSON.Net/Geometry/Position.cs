@@ -147,7 +147,14 @@
 
             if (obj.GetType() != GetType())
             {
-                return false;
+                // check whether obj and this are either:
+                // of type position OR of a type that is a subclass of position
+                bool objIsTypePositionOrSubclassOfTypePosition = obj.GetType() == typeof(Position) || obj.GetType().IsSubclassOf(typeof(Position));
+                bool thisIsTypePositionOrSubclassOfTypePosition = GetType() == typeof(Position) || GetType().IsSubclassOf(typeof(Position));
+
+                // if neither this or obj is of type position or subclass
+                if (!(objIsTypePositionOrSubclassOfTypePosition && thisIsTypePositionOrSubclassOfTypePosition))
+                    return false;
             }
 
             return Equals((Position)obj);
